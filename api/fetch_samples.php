@@ -1,5 +1,7 @@
 <?php
 
+include "../src/databasevariables.php";
+
 $table = 'npk_table';
 
 $primaryKey = 'id';
@@ -52,10 +54,10 @@ $columns = array(
 $where = "is_deleted = 0 AND plot_id = " . $plot_id;
 
 $sql_details = array(
-  'user' => 'REPLACEME',
-  'pass' => 'REPLACEME',
-  'db'   => 'REPLACEME',
-  'host' => 'REPLACEME'
+  'user' => $username,
+  'pass' => $password,
+  'db'   => $dbname,
+  'host' => $servername
 );
 
 require('ssp.class.php');

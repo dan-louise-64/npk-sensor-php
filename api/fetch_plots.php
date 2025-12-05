@@ -1,5 +1,7 @@
 <?php
 
+include "../src/databasevariables.php";
+
 $table = 'plots';
 
 $primaryKey = 'id';
@@ -38,13 +40,11 @@ if ($uid == 1) {
   $where = "owner_id = " . $uid . " and is_deleted = 0";
 }
 
-
-
 $sql_details = array(
-  'user' => 'REPLACEME',
-  'pass' => 'REPLACEME',
-  'db'   => 'REPLACEME',
-  'host' => 'REPLACEME'
+  'user' => $username,
+  'pass' => $password,
+  'db'   => $dbname,
+  'host' => $servername
 );
 
 require('ssp.class.php');
