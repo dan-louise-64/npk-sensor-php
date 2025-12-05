@@ -9,6 +9,10 @@
         <td><?= htmlspecialchars($_SESSION['name'], ENT_QUOTES) ?></td>
       </tr>
       <tr>
+        <td>Email:</td>
+        <td><?= htmlspecialchars($_SESSION['email'], ENT_QUOTES) ?></td>
+      </tr>
+      <tr>
         <td>UID:</td>
         <td><?= htmlspecialchars($_SESSION['id'], ENT_QUOTES) ?></td>
       </tr>
