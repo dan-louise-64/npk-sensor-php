@@ -8,19 +8,20 @@ if (!isset($_POST['username'], $_POST['password'])) {
   exit('Please fill both the username and password fields!');
 }
 
-if ($stmt = $mysqli->prepare('SELECT id, password FROM accounts WHERE username = ?')) {
+if ($stmt = $mysqli->prepare('SELECT id, email, password FROM accounts WHERE username = ?')) {
   $stmt->bind_param('s', $_POST['username']);
   $stmt->execute();
   $stmt->store_result();
 
   if ($stmt->num_rows > 0) {
-    $stmt->bind_result($id, $password);
+    $stmt->bind_result($id, $email, $password);
     $stmt->fetch();
     if (password_verify($_POST['password'], $password)) {
       session_regenerate_id();
       $_SESSION['loggedin'] = TRUE;
       $_SESSION['name'] = $_POST['username'];
       $_SESSION['id'] = $id;
+      $_SESSION['email'] = $email;
       header('Location: ../home.php');
     } else {
       header('Location: ../index.php');

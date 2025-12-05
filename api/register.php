@@ -2,11 +2,14 @@
 // Include database configuration file  
 include '../src/connection.php';
 
-if (!isset($_POST['username'], $_POST['password'])) {
+if (!isset($_POST['username'], $_POST['email'], $_POST['password1'], $_POST['password2'])) {
   exit('Please complete the registration form!');
 }
-if (empty($_POST['username']) || empty($_POST['password'])) {
+if (empty($_POST['username']) || empty($_POST['email']) || empty($_POST['password1']) || empty($_POST['password2'])) {
   exit('Please complete the registration form');
+}
+if (!($_POST['password1'] === $_POST['password2'])) {
+  echo "Retype your password";
 }
 
 if ($stmt = $mysqli->prepare('SELECT id, password FROM accounts WHERE username = ?')) {
@@ -16,9 +19,9 @@ if ($stmt = $mysqli->prepare('SELECT id, password FROM accounts WHERE username =
   if ($stmt->num_rows > 0) {
     echo 'Username exists, please choose another!';
   } else {
-    if ($stmt = $mysqli->prepare('INSERT INTO accounts (username, password) VALUES (?, ?)')) {
-      $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-      $stmt->bind_param('ss', $_POST['username'], $password);
+    if ($stmt = $mysqli->prepare('INSERT INTO accounts (username, email, password) VALUES (?, ?, ?)')) {
+      $password = password_hash($_POST['password1'], PASSWORD_DEFAULT);
+      $stmt->bind_param('sss', $_POST['username'], $_POST['email'], $password);
       $stmt->execute();
       echo 'You have successfully registered! You can now login!';
       header('Location: ../index.php');
