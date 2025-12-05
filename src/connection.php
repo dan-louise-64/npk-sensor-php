@@ -1,8 +1,6 @@
 <?php
-$servername = "REPLACEME";
-$username = "REPLACEME";
-$password = "REPLACEME";
-$dbname = "REPLACEME";
+
+include "databasevariables.php";
 
 $mysqli = new mysqli($servername, $username, $password, $dbname);
 
