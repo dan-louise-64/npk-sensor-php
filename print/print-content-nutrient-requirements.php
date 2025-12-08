@@ -1,3 +1,8 @@
+<?php
+require 'print-formulas.php';
+
+$number = 12345;
+?>
 <p id="print-nutrients-title">
 </p>
 
@@ -27,40 +32,24 @@
     const Kcell = row.cells[2];
     if (activeTab == "hrws") {
       document.getElementById('print-nutrients-title').innerHTML = "<h3>Nutrient Requirements for Hybrid Rice - Wet Season</h3>"
-      Ncell.innerHTML = "100"
-      if (phosAve < 5) {
-        Pcell.innerHTML = "20"
-      } else {
-        Pcell.innerHTML = "30"
-      }
-      Kcell.innerHTML = "30"
+      Ncell.innerHTML = <?php echo json_encode(nitrogenRequirementHRWS($nitr_ave)); ?>;
+      Pcell.innerHTML = <?php echo json_encode(phosphorusRequirementALL($phos_ave)); ?>;
+      Kcell.innerHTML = <?php echo json_encode(potassiumRequirementALL($pota_ave)); ?>;
     } else if (activeTab == "hrds") {
       document.getElementById('print-nutrients-title').innerHTML = "<h3>Nutrient Requirements for Hybrid Rice - Dry Season</h3>"
-      Ncell.innerHTML = "140"
-      if (phosAve < 5) {
-        Pcell.innerHTML = "20"
-      } else {
-        Pcell.innerHTML = "30"
-      }
-      Kcell.innerHTML = "30"
+      Ncell.innerHTML = <?php echo json_encode(nitrogenRequirementHRDS($nitr_ave)); ?>;
+      Pcell.innerHTML = <?php echo json_encode(phosphorusRequirementALL($phos_ave)); ?>;
+      Kcell.innerHTML = <?php echo json_encode(potassiumRequirementALL($pota_ave)); ?>;
     } else if (activeTab == "irws") {
       document.getElementById('print-nutrients-title').innerHTML = "<h3>Nutrient Requirements for Inbred Rice - Wet Season</h3>"
-      Ncell.innerHTML = "80"
-      if (phosAve < 5) {
-        Pcell.innerHTML = "20"
-      } else {
-        Pcell.innerHTML = "30"
-      }
-      Kcell.innerHTML = "30"
+      Ncell.innerHTML = <?php echo json_encode(nitrogenRequirementIRWS($nitr_ave)); ?>;
+      Pcell.innerHTML = <?php echo json_encode(phosphorusRequirementALL($phos_ave)); ?>;
+      Kcell.innerHTML = <?php echo json_encode(potassiumRequirementALL($pota_ave)); ?>;
     } else if (activeTab == "irds") {
       document.getElementById('print-nutrients-title').innerHTML = "<h3>Nutrient Requirements for Inbred Rice - Dry Season</h3>"
-      Ncell.innerHTML = "100"
-      if (phosAve < 5) {
-        Pcell.innerHTML = "20"
-      } else {
-        Pcell.innerHTML = "30"
-      }
-      Kcell.innerHTML = "30"
+      Ncell.innerHTML = <?php echo json_encode(nitrogenRequirementIRDS($nitr_ave)); ?>;
+      Pcell.innerHTML = <?php echo json_encode(phosphorusRequirementALL($phos_ave)); ?>;
+      Kcell.innerHTML = <?php echo json_encode(potassiumRequirementALL($pota_ave)); ?>;
     } else {
       Ncell.innerHTML = "NAN"
       Pcell.innerHTML = "NAN"

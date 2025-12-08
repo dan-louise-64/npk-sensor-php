@@ -87,112 +87,52 @@
 
     if (activeTab == "hrws") {
       document.getElementById('print-fertilizer-title').innerHTML = "<h3>Fertilizer Recommendation for Hybrid Rice - Wet Season</h3>"
-      cell1.innerHTML = "20"
-      if (parseFloat(phosAve) < 5) {
-        cell2.innerHTML = "2.00"
-      } else {
-        cell2.innerHTML = "-"
-      }
-      if (parseFloat(nitrAve) > 1.20) {
-        cell3.innerHTML = "0.50"
-      } else {
-        cell3.innerHTML = "-"
-      }
-      if (parseFloat(nitrAve) > 1.20) {
-        cell4.innerHTML = "-"
-      } else {
-        cell4.innerHTML = "4.25"
-      }
-      if (parseFloat(potaAve) > 85) {
-        cell5.innerHTML = "1.00"
-      } else {
-        cell5.innerHTML = "-"
-      }
-      cell6.innerHTML = "1.00"
-      cell7.innerHTML = "1.75"
-      cell8.innerHTML = "1.00"
-      cell9.innerHTML = "1.00"
-      cell10.innerHTML = "20"
+      cell1.innerHTML = <?php echo json_encode(organicFertilizerALL($nitr_ave)); ?>;
+      cell2.innerHTML = <?php echo json_encode(ammoniumPhosphateHRWS($nitr_ave, $phos_ave)); ?>;
+      cell3.innerHTML = <?php echo json_encode(ureaTransplantHRWS($nitr_ave, $phos_ave)); ?>;
+      cell4.innerHTML = <?php echo json_encode(completeHRWS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell5.innerHTML = <?php echo json_encode(muriateOfPotashTransplantHRWS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell6.innerHTML = <?php echo json_encode(ammoniumPhosphateAfterTransplantHRWS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell7.innerHTML = <?php echo json_encode(ureaTransplant2025HRWS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell8.innerHTML = <?php echo json_encode(ureaTransplant3545HRWS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell9.innerHTML = <?php echo json_encode(muriateOfPotashPanicleALL()); ?>;
+      cell10.innerHTML = <?php echo json_encode(compostFungusActivatorALL()); ?>;
     } else if (activeTab == "hrds") {
       document.getElementById('print-fertilizer-title').innerHTML = "<h3>Fertilizer Recommendation for Hybrid Rice - Dry Season</h3>"
-      cell1.innerHTML = "20"
-      if (parseFloat(phosAve) < 5) {
-        cell2.innerHTML = "2.00"
-      } else {
-        cell2.innerHTML = "-"
-      }
-      if (parseFloat(nitrAve) > 1.20) {
-        cell3.innerHTML = "1.00"
-      } else {
-        cell3.innerHTML = "0.50"
-      }
-      if (parseFloat(nitrAve) > 1.20) {
-        cell4.innerHTML = "-"
-      } else {
-        cell4.innerHTML = "4.25"
-      }
-      if (parseFloat(potaAve) > 85) {
-        cell5.innerHTML = "1.00"
-      } else {
-        cell5.innerHTML = "-"
-      }
-      cell6.innerHTML = "1.25"
-      cell7.innerHTML = "2.50"
-      cell8.innerHTML = "1.25"
-      cell9.innerHTML = "1.00"
-      cell10.innerHTML = "20"
+      cell1.innerHTML = <?php echo json_encode(organicFertilizerALL($nitr_ave)); ?>;
+      cell2.innerHTML = <?php echo json_encode(ammoniumPhosphateHRDS($nitr_ave, $phos_ave)); ?>;
+      cell3.innerHTML = <?php echo json_encode(ureaTransplantHRDS($nitr_ave, $phos_ave)); ?>;
+      cell4.innerHTML = <?php echo json_encode(completeHRDS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell5.innerHTML = <?php echo json_encode(muriateOfPotashTransplantHRDS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell6.innerHTML = <?php echo json_encode(ammoniumPhosphateAfterTransplantHRDS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell7.innerHTML = <?php echo json_encode(ureaTransplant2025HRDS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell8.innerHTML = <?php echo json_encode(ureaTransplant3545HRDS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell9.innerHTML = <?php echo json_encode(muriateOfPotashPanicleALL()); ?>;
+      cell10.innerHTML = <?php echo json_encode(compostFungusActivatorALL()); ?>;
     } else if (activeTab == "irws") {
       document.getElementById('print-fertilizer-title').innerHTML = "<h3>Fertilizer Recommendation for Inbred Rice - Wet Season</h3>"
-      cell1.innerHTML = "20"
-      cell2.innerHTML = "-"
-      if (parseFloat(nitrAve) > 1.20) {
-        cell3.innerHTML = "0.25"
-      } else {
-        cell3.innerHTML = "-"
-      }
-      if (parseFloat(nitrAve) > 1.20) {
-        cell4.innerHTML = "3.00"
-      } else {
-        cell4.innerHTML = "4.25"
-      }
-      if (parseFloat(potaAve) > 85) {
-        cell5.innerHTML = "0.25"
-      } else {
-        cell5.innerHTML = "-"
-      }
-      cell6.innerHTML = "0.75"
-      cell7.innerHTML = "1.50"
-      cell8.innerHTML = "0.75"
-      cell9.innerHTML = "1.00"
-      cell10.innerHTML = "20"
+      cell1.innerHTML = <?php echo json_encode(organicFertilizerALL($nitr_ave)); ?>;
+      cell2.innerHTML = <?php echo json_encode(ammoniumPhosphateIRWS($nitr_ave, $phos_ave)); ?>;
+      cell3.innerHTML = <?php echo json_encode(ureaTransplantIRWS($nitr_ave, $phos_ave)); ?>;
+      cell4.innerHTML = <?php echo json_encode(completeIRWS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell5.innerHTML = <?php echo json_encode(muriateOfPotashTransplantIRWS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell6.innerHTML = <?php echo json_encode(ammoniumPhosphateAfterTransplantIRWS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell7.innerHTML = <?php echo json_encode(ureaTransplant2025IRWS($nitr_ave)); ?>;
+      cell8.innerHTML = <?php echo json_encode(ureaTransplant3545IRWS($nitr_ave)); ?>;
+      cell9.innerHTML = <?php echo json_encode(muriateOfPotashPanicleALL()); ?>;
+      cell10.innerHTML = <?php echo json_encode(compostFungusActivatorALL()); ?>;
     } else if (activeTab == "irds") {
       document.getElementById('print-fertilizer-title').innerHTML = "<h3>Fertilizer Recommendation for Inbred Rice - Dry Season</h3>"
-      cell1.innerHTML = "20"
-      if (parseFloat(phosAve) < 5) {
-        cell2.innerHTML = "2.00"
-      } else {
-        cell2.innerHTML = "-"
-      }
-      if (parseFloat(nitrAve) > 1.20) {
-        cell3.innerHTML = "0.50"
-      } else {
-        cell3.innerHTML = "-"
-      }
-      if (parseFloat(nitrAve) > 1.20) {
-        cell4.innerHTML = "-"
-      } else {
-        cell4.innerHTML = "4.25"
-      }
-      if (parseFloat(potaAve) > 85) {
-        cell5.innerHTML = "1.00"
-      } else {
-        cell5.innerHTML = "-"
-      }
-      cell6.innerHTML = "1.00"
-      cell7.innerHTML = "1.75"
-      cell8.innerHTML = "1.00"
-      cell9.innerHTML = "1.00"
-      cell10.innerHTML = "20"
+      cell1.innerHTML = <?php echo json_encode(organicFertilizerALL($nitr_ave)); ?>;
+      cell2.innerHTML = <?php echo json_encode(ammoniumPhosphateIRDS($nitr_ave, $phos_ave)); ?>;
+      cell3.innerHTML = <?php echo json_encode(ureaTransplantIRDS($nitr_ave, $phos_ave)); ?>;
+      cell4.innerHTML = <?php echo json_encode(completeIRDS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell5.innerHTML = <?php echo json_encode(muriateOfPotashTransplantIRDS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell6.innerHTML = <?php echo json_encode(ammoniumPhosphateAfterTransplantIRDS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell7.innerHTML = <?php echo json_encode(ureaTransplant2025IRDS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell8.innerHTML = <?php echo json_encode(ureaTransplant3545IRDS($nitr_ave, $phos_ave, $pota_ave)); ?>;
+      cell9.innerHTML = <?php echo json_encode(muriateOfPotashPanicleALL()); ?>;
+      cell10.innerHTML = <?php echo json_encode(compostFungusActivatorALL()); ?>;
     } else {
       cell1.innerHTML = "NAN"
       cell2.innerHTML = "NAN"

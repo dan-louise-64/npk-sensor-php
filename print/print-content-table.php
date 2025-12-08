@@ -26,6 +26,32 @@
     return ($count !== 0) ? round($sum / $count, 2) : NAN;
   }
 
+  function getRating($value, $low, $high)
+  {
+    if ($value < $low) {
+      return '<span class="badge text-bg-warning">Low</span>';
+    } elseif ($value >= $low && $value <= $high) {
+      return '<span class="badge text-bg-secondary">Medium</span>';
+    } else {
+      return '<span class="badge text-bg-danger">High</span>';
+    }
+  }
+
+  function nRating($nitrogen)
+  {
+    return getRating($nitrogen, 1.70, 3);
+  }
+
+  function pRating($phosphorus)
+  {
+    return getRating($phosphorus, 7, 25);
+  }
+
+  function kRating($potassium)
+  {
+    return getRating($potassium, 120, 250);
+  }
+
   if ($result = $mysqli->query($sql)) {
     while ($row = $result->fetch_assoc()) {
       $sampleValue = $row["id"];
@@ -42,16 +68,16 @@
 
       echo '<tr> 
               <td>' . $sampleValue . '</td> 
-              <td>' . $nitrValue . '</td> 
-              <td>' . $phosValue . '</td>
-              <td>' . $potaValue . '</td>
+              <td>' . $nitrValue . '<br>' . nRating($nitrValue) . '</td> 
+              <td>' . $phosValue . '<br>' . pRating($phosValue) . '</td> 
+              <td>' . $potaValue . '<br>' . kRating($potaValue) . '</td> 
             </tr>';
     }
     echo '<tr>
             <td><strong>Average</strong></td> 
-            <td><strong id="print-nitr-ave">' . $nitr_ave . '</strong></td> 
-            <td><strong id="print-phos-ave">' . $phos_ave . '</strong></td>
-            <td><strong id="print-pota-ave">' . $pota_ave . '</strong></td>
+            <td><strong id="print-nitr-ave">' . $nitr_ave . '</strong><br>' . nRating($nitr_ave) . '</td> 
+            <td><strong id="print-phos-ave">' . $phos_ave . '</strong><br>' . pRating($phos_ave) . '</td> 
+            <td><strong id="print-pota-ave">' . $pota_ave . '</strong><br>' . kRating($pota_ave) . '</td> 
           </tr>';
 
     echo '</table>';
